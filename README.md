@@ -1,25 +1,25 @@
-# Convoys Wharf 改造计划互动平台
+# Convoys Wharf Regeneration Interactive Platform
 
-这是一个用于展示 Convoys Wharf 改造计划进度的互动网页平台。用户可以通过该平台了解项目进度、查看各区块详情，并参与项目讨论。
+This is an interactive web platform for showcasing the progress of the Convoys Wharf regeneration project. Users can learn about project progress, view block details, and participate in project discussions through this platform.
 
-## 功能特点
+## Features
 
-- 📊 项目进度看板
-  - 总体节点时间线
-  - 关键指标展示
-  - 快捷导航
+- 📊 Project Progress Dashboard
+  - Overall Timeline
+  - Key Metrics Display
+  - Quick Navigation
 
-- 🗺️ 交互式地图
-  - 区块信息展示
-  - 进度详情查看
-  - 历史建筑信息
+- 🗺️ Interactive Map
+  - Block Information Display
+  - Progress Details View
+  - Historical Building Information
 
-- 💬 在线讨论
-  - AI 智能助手
-  - 实时对话
-  - 社区互动
+- 💬 Online Discussion
+  - AI Intelligent Assistant
+  - Real-time Conversation
+  - Community Interaction
 
-## 技术栈
+## Technology Stack
 
 - Next.js
 - TypeScript
@@ -27,38 +27,38 @@
 - Headless UI
 - Hero Icons
 
-## 开始使用
+## Getting Started
 
-1. 安装依赖：
+1. Install dependencies:
 ```bash
 npm install
 ```
 
-2. 运行开发服务器：
+2. Run development server:
 ```bash
 npm run dev
 ```
 
-3. 打开浏览器访问：
+3. Open browser to:
 ```
 http://localhost:3000
 ```
 
-## 项目结构
+## Project Structure
 
 ```
 src/
-  ├── app/              # 页面文件
-  ├── components/       # React 组件
-  ├── styles/          # 样式文件
-  ├── lib/             # 工具函数
-  └── types/           # TypeScript 类型定义
+  ├── app/              # Page files
+  ├── components/       # React components
+  ├── styles/          # Style files
+  ├── lib/             # Utility functions
+  └── types/           # TypeScript type definitions
 ```
 
-## 贡献指南
+## Contribution Guidelines
 
-欢迎提交 Issue 和 Pull Request 来帮助改进项目。
+Welcome to submit Issues and Pull Requests to help improve the project.
 
-## 许可证
+## License
 
 MIT 

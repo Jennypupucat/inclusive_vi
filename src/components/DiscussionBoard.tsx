@@ -11,13 +11,36 @@ interface Message {
   likes: number;
 }
 
+const Footer: FC = () => {
+  return (
+    <footer className="mt-8 pt-4 border-t border-gray-200">
+      <div className="flex flex-col items-center justify-between text-sm text-gray-600">
+        <div className="flex items-center space-x-4 mb-2">
+          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-custom-purple transition-colors">
+            Instagram
+          </a>
+          <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer" className="hover:text-custom-purple transition-colors">
+            TikTok
+          </a>
+          <a href="https://www.convoyswharf.com" target="_blank" rel="noopener noreferrer" className="hover:text-custom-purple transition-colors">
+            Official Website
+          </a>
+        </div>
+        <div className="text-xs text-gray-500">
+          Made with ❤️ by jennypupucat | Convoys Wharf | UCL BSEER
+        </div>
+      </div>
+    </footer>
+  );
+};
+
 const DiscussionBoard: FC = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
       type: 'ai',
-      content: '欢迎来到项目讨论区！您可以在这里询问关于项目的任何问题。',
-      timestamp: '刚刚',
+      content: 'Welcome to the project discussion area! You can ask any questions about the project here.',
+      timestamp: 'Just now',
       likes: 0,
     },
   ]);
@@ -31,20 +54,43 @@ const DiscussionBoard: FC = () => {
       id: Date.now().toString(),
       type: 'user',
       content: input,
-      timestamp: '刚刚',
+      timestamp: 'Just now',
       likes: 0,
     };
 
     setMessages(prev => [...prev, userMessage]);
     setInput('');
 
-    // 模拟AI回复
+    // 模拟AI智能回复
     setTimeout(() => {
+      let reply = 'Thank you for your question! We are processing your inquiry...';
+      const lower = input.toLowerCase();
+      if (lower.includes('olympia')) {
+        reply = 'The Olympia Building restoration is expected to be completed by the end of 2025. This historic structure will be transformed into a vibrant community space while preserving its architectural heritage.';
+      } else if (lower.includes('history')) {
+        reply = 'Deptford has a rich maritime history as the site of the Royal Dockyard. The area witnessed the glory of the Age of Discovery and played a crucial role in Britain\'s naval history. Today, we\'re working to preserve this heritage while creating a modern, sustainable community.';
+      } else if (lower.includes('community')) {
+        reply = 'Community engagement is a core part of the Convoys Wharf regeneration plan. We\'re actively working with local residents, businesses, and cultural organizations to ensure the development meets community needs while preserving Deptford\'s unique character.';
+      } else if (lower.includes('market')) {
+        reply = 'The Deptford Market is a vital part of our community\'s identity. We\'re committed to preserving its diversity, especially the Asian food and crafts stalls, while improving facilities and accessibility for both vendors and visitors.';
+      } else if (lower.includes('park') || lower.includes('green space')) {
+        reply = 'Pepys Park and other green spaces are essential for community wellbeing. Our plans include enhancing these areas with better lighting, seating, and accessibility while maintaining space for community activities and events.';
+      } else if (lower.includes('transport') || lower.includes('accessibility')) {
+        reply = 'We\'re improving transport links and accessibility throughout the area. This includes better cycling infrastructure, enhanced DLR connections, and improved pedestrian routes to create a more connected and sustainable community.';
+      } else if (lower.includes('housing') || lower.includes('rent')) {
+        reply = 'Affordable housing is a key priority in our regeneration plans. We\'re working to ensure a mix of housing options that meet community needs while maintaining the area\'s character and accessibility.';
+      } else if (lower.includes('art') || lower.includes('culture')) {
+        reply = 'Cultural activities are central to our vision. We plan to host local art exhibitions in the Olympia Building and create new spaces for community events, workshops, and performances.';
+      } else if (lower.includes('safety') || lower.includes('security')) {
+        reply = 'Community safety is paramount. We\'re implementing improved lighting, better surveillance, and enhanced public spaces to create a safer environment for all residents and visitors.';
+      } else if (lower.includes('river') || lower.includes('waterfront')) {
+        reply = 'The Thames waterfront is a key feature of Deptford. Our plans include creating a vibrant riverside path with better lighting, seating, and public spaces to connect the high street with the river.';
+      }
       const aiMessage: Message = {
         id: (Date.now() + 1).toString(),
         type: 'ai',
-        content: '感谢您的提问！我们正在处理您的询问...',
-        timestamp: '刚刚',
+        content: reply,
+        timestamp: 'Just now',
         likes: 0,
       };
       setMessages(prev => [...prev, aiMessage]);
@@ -60,15 +106,15 @@ const DiscussionBoard: FC = () => {
   };
 
   return (
-    <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 h-full">
-      <h2 className="text-2xl font-semibold mb-4 text-gray-900">项目讨论 & 智能助手</h2>
+    <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6 flex flex-col h-full">
+      <h2 className="text-2xl font-semibold mb-4 text-gray-900">Project Discussion & Intelligent Assistant</h2>
       <p className="text-gray-600 mb-6">
-        在下方输入框中，您可以提出对改造计划的建议或询问项目进度、历史保护等相关信息。
-        我们的 AI 智能助手会即时回复，也可供社区其他成员参考。
+        Below the input box, you can propose suggestions for the project or ask questions about project progress, historical protection, etc.
+        Our intelligent assistant will reply immediately, and it can also be referenced by other community members.
       </p>
 
       {/* 消息列表 */}
-      <div className="space-y-4 h-96 overflow-y-auto mb-6">
+      <div className="space-y-4 h-[calc(100%-200px)] overflow-y-auto mb-6">
         {messages.map((message) => (
           <div
             key={message.id}
@@ -113,14 +159,14 @@ const DiscussionBoard: FC = () => {
       </div>
 
       {/* 输入区域 */}
-      <div className="flex gap-2">
+      <div className="flex gap-2 mb-4">
         <input
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="有什么想法或问题？例如：'P07 Olympia Building 何时开始外墙清理？'"
+          placeholder="What's your idea or question? For example: 'When will the P07 Olympia Building start exterior cleaning?'"
           className="flex-1 rounded-lg border border-gray-300 px-4 py-2 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-custom-purple focus:border-transparent"
-          onKeyPress={(e) => e.key === 'Enter' && handleSend()}
+          onKeyDown={(e) => e.key === 'Enter' && handleSend()}
         />
         <button
           onClick={handleSend}
@@ -129,6 +175,8 @@ const DiscussionBoard: FC = () => {
           <PaperAirplaneIcon className="h-5 w-5" />
         </button>
       </div>
+
+      <Footer />
     </div>
   );
 };

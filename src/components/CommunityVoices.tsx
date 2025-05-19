@@ -70,8 +70,11 @@ const CommunityVoices: FC = () => {
   return (
     <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6">
       <h2 className="text-2xl font-semibold mb-6 text-gray-900 flex items-center gap-2">
-        <span>🌐</span> Community Voices · Inspiration Hub
+        <span>🌐</span> Project Discussion & AI Assistant
       </h2>
+      <p className="text-gray-600 mb-6">
+        In the input box below, you can submit suggestions for the regeneration plan or ask about project progress, heritage protection, and related information. Our AI assistant will respond instantly, and your input can also be referenced by other community members.
+      </p>
 
       {/* Word Cloud Section */}
       <div className="mb-8">

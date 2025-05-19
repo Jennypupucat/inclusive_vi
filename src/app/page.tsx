@@ -5,6 +5,7 @@ import ProgressBoard from '@/components/ProgressBoard';
 import InteractiveMap from '@/components/InteractiveMap';
 import DiscussionBoard from '@/components/DiscussionBoard';
 import CommunityVoices from '@/components/CommunityVoices';
+import KnowMoreDeptford from '@/components/KnowMoreDeptford';
 
 export default function Home() {
   const [selectedSection, setSelectedSection] = useState<string | null>(null);
@@ -54,6 +55,9 @@ export default function Home() {
               {/* 交互地图 */}
               <div className="lg:col-span-1">
                 <InteractiveMap selectedSection={selectedSection} />
+                <div className="mt-6">
+                  <KnowMoreDeptford />
+                </div>
               </div>
 
               {/* 讨论区 */}

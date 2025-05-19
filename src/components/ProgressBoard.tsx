@@ -78,7 +78,7 @@ const PieChart: FC<{ percentage: number; color: string }> = ({ percentage, color
   return (
     <div className="relative inline-flex items-center justify-center">
       <svg className="transform -rotate-90 w-14 h-14">
-        {/* 背景圆环 */}
+        {/* Background circle */}
         <circle
           cx="28"
           cy="28"
@@ -88,7 +88,7 @@ const PieChart: FC<{ percentage: number; color: string }> = ({ percentage, color
           fill="none"
           className="text-gray-200"
         />
-        {/* 进度圆环 */}
+        {/* Progress circle */}
         <circle
           cx="28"
           cy="28"
@@ -116,20 +116,20 @@ const ProgressBoard: FC<ProgressBoardProps> = ({ onSectionSelect }) => {
 
   return (
     <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg p-6">
-      <h2 className="text-2xl font-semibold mb-6 text-gray-900">项目进度</h2>
+      <h2 className="text-2xl font-semibold mb-6 text-gray-900">Project Progress</h2>
 
-      {/* 总体节点 - 时间轴展示 */}
+      {/* Overall Timeline - Timeline Display */}
       <div className="mb-8">
         <h3 className="text-lg font-medium mb-6 text-gray-900">Overall Timeline</h3>
         <div className="relative">
-          {/* 垂直时间轴线 */}
+          {/* Vertical Timeline Line */}
           <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gray-200" />
 
-          {/* 里程碑节点 */}
+          {/* Milestone Nodes */}
           <div className="space-y-8">
             {milestones.map((milestone, index) => (
               <div key={index} className="relative flex items-start">
-                {/* 时间轴节点标记 */}
+                {/* Timeline Node Markers */}
                 <div className="absolute left-8 -translate-x-1/2 flex items-center justify-center">
                   {milestone.status === 'completed' ? (
                     <CheckCircleSolidIcon 
@@ -149,12 +149,12 @@ const ProgressBoard: FC<ProgressBoardProps> = ({ onSectionSelect }) => {
                   )}
                 </div>
 
-                {/* 日期 */}
+                {/* Date */}
                 <div className="w-16 text-right pr-8">
                   <span className="text-sm text-gray-600 whitespace-pre-line">{milestone.date}</span>
                 </div>
 
-                {/* 内容区域 */}
+                {/* Content Area */}
                 <div 
                   className="flex-1 rounded-lg p-4"
                   style={{ backgroundColor: `var(--${milestone.color})15` }}
@@ -162,7 +162,7 @@ const ProgressBoard: FC<ProgressBoardProps> = ({ onSectionSelect }) => {
                   <h4 className="text-gray-900 font-medium">{milestone.title}</h4>
                   <p className="text-gray-600 text-sm mt-1">{milestone.description}</p>
                   
-                  {/* 进度条 */}
+                  {/* Progress Bar */}
                   <div className="mt-3">
                     <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden">
                       <div 
@@ -182,7 +182,7 @@ const ProgressBoard: FC<ProgressBoardProps> = ({ onSectionSelect }) => {
         </div>
       </div>
 
-      {/* 关键指标 */}
+      {/* Key Metrics */}
       <div>
         <h3 className="text-lg font-medium mb-6 text-gray-900">Key Metrics</h3>
         <div className="grid grid-cols-2 gap-4">
@@ -219,32 +219,32 @@ const ProgressBoard: FC<ProgressBoardProps> = ({ onSectionSelect }) => {
         </div>
       </div>
 
-      {/* 快捷导航 */}
+      {/* Quick Navigation */}
       <div>
-        <h3 className="text-lg font-medium mb-4 text-gray-900">快捷导航</h3>
+        <h3 className="text-lg font-medium mb-4 text-gray-900">Quick Navigation</h3>
         <div className="space-y-3">
           <button
             onClick={handleMapClick}
             className="w-full flex items-center justify-center px-4 py-2 bg-custom-green text-white rounded-lg hover:bg-custom-green/80 transition-colors"
           >
             <MapIcon className="h-5 w-5 mr-2" />
-            查看场地分区
+            View Site Zones
           </button>
           <button
             onClick={() => onSectionSelect('discussion')}
             className="w-full flex items-center justify-center px-4 py-2 bg-custom-purple text-white rounded-lg hover:bg-custom-purple/80 transition-colors"
           >
             <ChatBubbleLeftIcon className="h-5 w-5 mr-2" />
-            进入讨论区
+            Enter Discussion
           </button>
         </div>
       </div>
 
-      {/* 分区说明弹窗 */}
+      {/* Zone Description Modal */}
       {showZoneModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-xl max-w-4xl w-full mx-4 p-6 relative">
-            {/* 关闭按钮 */}
+            {/* Close Button */}
             <button
               onClick={() => setShowZoneModal(false)}
               className="absolute right-4 top-4 text-gray-500 hover:text-gray-700 transition-colors"
@@ -252,7 +252,7 @@ const ProgressBoard: FC<ProgressBoardProps> = ({ onSectionSelect }) => {
               <XMarkIcon className="h-6 w-6" />
             </button>
 
-            {/* 标题 */}
+            {/* Title */}
             <div className="mb-6">
               <h3 className="text-2xl font-semibold text-gray-900">Site Zoning Overview</h3>
               <p className="text-gray-600 mt-2">
@@ -260,33 +260,33 @@ const ProgressBoard: FC<ProgressBoardProps> = ({ onSectionSelect }) => {
               </p>
             </div>
 
-            {/* 图片展示区域 */}
+            {/* Image Display Area */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-              {/* 主要分区图 */}
+              {/* Main Zone Map */}
               <div className="lg:col-span-8 space-y-4">
                 <div className="rounded-lg overflow-hidden shadow-lg">
                   <img
                     src="/img6.png"
-                    alt="分区规划图"
+                    alt="Zone Planning Map"
                     className="w-full h-auto object-cover"
                   />
                 </div>
                 <div className="rounded-lg overflow-hidden shadow-lg">
                   <img
                     src="/img8.png"
-                    alt="分区规划补充图"
+                    alt="Zone Planning Supplementary Map"
                     className="w-full h-auto object-cover"
                   />
                 </div>
               </div>
 
-              {/* 图例说明 */}
+              {/* Legend Description */}
               <div className="lg:col-span-4 space-y-4">
                 <div className="bg-gray-50 rounded-lg p-4">
                   <h4 className="text-sm font-medium text-gray-900 mb-3">Legend</h4>
                   <img
                     src="/img7.png"
-                    alt="图例"
+                    alt="Legend"
                     className="w-full h-auto object-contain"
                   />
                 </div>
